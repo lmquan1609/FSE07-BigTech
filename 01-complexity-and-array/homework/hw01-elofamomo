@@ -1,0 +1,10 @@
+class Solution:
+    def generate(self, numRows: int) -> list[list[int]]:
+        return [] if numRows == 0 else [[1]] + [[1] + [a + b for a, b in zip(l, l[1:])] \
+            + [1] for l in self.generate(numRows - 1)]
+    
+    def plusOne(self, digits: list[int]) -> list[int]:
+        return list(map(int, str(int(''.join(map(str, digits))) + 1)))
+        
+    def removeElement(self, nums: list[int], val: int) -> int:
+        return sum([nums[i] != val or nums.pop(i) == None for i in range(len(nums)-1, -1, -1)])
